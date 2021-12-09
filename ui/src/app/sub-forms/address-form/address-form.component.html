@@ -1,0 +1,72 @@
+<ng-template>
+    <div class="address-lookup dropdown">
+
+    </div>
+</ng-template>
+
+<div [formGroup]="form">
+    <div class="row form-group">
+        <label for="search" class="col-sm-4 control-label">Lookup Address:</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control address-lookup-search" autocomplete="off" (input)="search($event)" placeholder="Start typing Address or Postcode" id="{{ idSuffix }}search" formControlName="search" />
+        </div>
+    </div>
+    <div class="row" *ngIf="showResults">
+        <div class="col-md-8 offset-md-4">
+            <div class="address-lookup-selection">
+                <select class="form-control address-selector" id="{{ idSuffix }}address-selector" autocomplete="off" formControlName="selectedAddress" (change)="detectAddressSelect($event)">
+                    <option [value]="null">-- Select Address -- </option>
+                    <option *ngFor="let item of addressList" [ngValue]="item">{{ item.Text }} - {{ item.Description }} <span *ngIf="DEBUG">({{ item.Type }})</span></option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p class="center"><strong>--- OR ---</strong></p>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="line1" class="col-sm-4 control-label">Line 1:</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Line 1" id="{{ idSuffix }}line1" formControlName="line1" [value]="form.controls['line1'].value | titlecase"/>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="line2" class="col-sm-4 control-label">Line 2: <span class="hidden glyphicon glyphicon-info-sign"></span></label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Line 2" id="{{ idSuffix }}line2" formControlName="line2" [value]="form.controls['line2'].value | titlecase"/>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="line3" class="col-sm-4 control-label">Line 3: <span class="hidden glyphicon glyphicon-info-sign"></span></label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Line 3" id="{{ idSuffix }}line3" formControlName="line3" [value]="form.controls['line3'].value | titlecase"/>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="town" class="col-sm-4 control-label">Town:</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Town" id="{{ idSuffix }}town" formControlName="town" [value]="form.controls['town'].value | titlecase"/>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="county" class="col-sm-4 control-label">County:</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="County" id="{{ idSuffix }}county" formControlName="county" [value]="form.controls['county'].value | titlecase"/>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <label for="postcode" class="col-sm-4 control-label">Postcode:</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" placeholder="Postcode" oninput="this.value = this.value.toUpperCase()" id="{{ idSuffix }}postcode" formControlName="postcode" />
+        </div>
+    </div>
+</div>

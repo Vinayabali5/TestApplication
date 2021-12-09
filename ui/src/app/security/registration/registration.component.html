@@ -1,0 +1,86 @@
+<form [formGroup]="registration" *ngIf="!sent">
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <div class="header row">
+                    <h1 class="col section-header">Register for an account</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-md">
+                        <p>To make an application to Reigate College, you first need to Register.</p>
+                        <p>One you have registered (i.e. created an account) you will receive an account confirmation email with an activation link. You will need to activate your account before you can Login.</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label for="username" class="col-sm-4 control-label">Email Address: <span class="hidden glyphicon glyphicon-info-sign" uib-tooltip="This is your legal first name."></span></label>
+                    <div class="col-sm-8">
+                        <input type="email" class="form-control" placeholder="Email Address" id="username" formControlName="username" />
+                        <div *ngIf="registration.controls['username'].invalid && (registration.controls['username'].dirty || registration.controls['username'].touched)" class="col-off-md-4 alert alert-danger">
+                            <div *ngIf="registration.controls['username'].errors?.required">Email address is required.</div>
+                            <div *ngIf="registration.controls['username'].errors?.pattern">Email address is not valid.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label for="password" class="col-sm-4 control-label">Password: <span class="hidden glyphicon glyphicon-info-sign" uib-tooltip="This is your legal first name."></span></label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" placeholder="Password" id="password" formControlName="password" />
+                        <div *ngIf="registration.controls['password'].invalid && (registration.controls['password'].dirty || registration.controls['password'].touched)" class="col-off-md-4 alert alert-danger">
+                            <div *ngIf="registration.controls['password'].errors?.required">Password is required.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label for="confirmPassword" class="col-sm-4 control-label">Confirm Password: <span class="hidden glyphicon glyphicon-info-sign" uib-tooltip="This is your legal first name."></span></label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" placeholder="Confirm Password" id="confirmPassword" formControlName="confirmPassword" />
+                        <div *ngIf="registration.controls['confirmPassword'].invalid && (registration.controls['confirmPassword'].dirty || registration.controls['confirmPassword'].touched)" class="col-off-md-4 alert alert-danger">
+                            <div *ngIf="registration.controls['confirmPassword'].errors?.required">Confirmation password is required.</div>
+                        </div>
+                        <div *ngIf="registration.invalid && (registration.controls['password'].dirty || registration.controls['password'].touched) && (registration.controls['confirmPassword'].dirty || registration.controls['confirmPassword'].touched)" class="col-off-md-4 alert alert-danger">
+                            <div *ngIf="registration.errors?.passwordMatches">The passwords do not match.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <button class="btn btn-primary" (click)="register()" [disabled]="!isValid()">Register</button>
+                <button *ngIf="DEBUG" class="btn btn-default" (click)="debugOutput()">Debug</button>
+            </div>
+        </div>
+        <div class="row" *ngIf="message">
+            <div class="col-sm-12">
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <resend-reset-message></resend-reset-message>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<div class="container" *ngIf="sent">
+    <div class="row">
+        <div class="col-md">
+            <div class="header row">
+                <h1 class="col section-header">Registration Complete - Check Your Email</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-md">
+                    <p>You have completed the user registration. We will process your request and send an email with a link to confirm your user account. Please check the email address that you signed up with for your unique link.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

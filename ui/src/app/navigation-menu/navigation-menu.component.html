@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <span class="navbar-brand" href="#">
+        <img class="logo img-responsive" src="assets/images/logo-light.png" alt="Reigate College Logo">
+    </span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-bar" aria-controls="navigation-bar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navigation-bar">
+        <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn()">
+            <li class="nav-item active" *ngIf="!hasApplication()">
+                <a class="nav-link" routerLink="apply">Apply</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active" *ngIf="!isLoggedIn()">
+                <a class="nav-link" routerLink="register">Register</a>
+            </li>
+            <li class="nav-item active" *ngIf="!isLoggedIn()">
+                <a class="nav-link" routerLink="login">Login</a>
+            </li>
+            <li class="nav-item active" *ngIf="isLoggedIn()">
+                <a class="nav-link" routerLink="logout" (click)="logout()">Log Out</a>
+            </li>
+        </ul>
+    </div>
+</nav>

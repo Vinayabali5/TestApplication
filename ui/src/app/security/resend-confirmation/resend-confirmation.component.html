@@ -1,0 +1,58 @@
+<form [formGroup]="resendForm" *ngIf="!sent">
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <div class="header row">
+                    <h1 class="col section-header">Resend Email Address</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-md">
+                        <p>To resend the confirmation email please supply the email address that you used to register.</p>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <label for="username" class="col-sm-4 control-label">Email Address: <span class="hidden glyphicon glyphicon-info-sign" uib-tooltip="This is your legal first name."></span></label>
+                    <div class="col-sm-8">
+                        <input type="email" class="form-control" placeholder="Email Address" id="username" formControlName="username" />
+                        <div *ngIf="resendForm.controls['username'].invalid && (resendForm.controls['username'].dirty || resendForm.controls['username'].touched)" class="col-off-md-4 alert alert-danger">
+                            <div *ngIf="resendForm.controls['username'].errors?.required">Email address is required.</div>
+                            <div *ngIf="resendForm.controls['username'].errors?.pattern">Email address is not valid.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <button class="btn btn-primary" (click)="resend()" [disabled]="!isValid()">Resend Confirmation</button>
+                <button *ngIf="DEBUG" class="btn btn-default" (click)="debugOutput()">Debug</button>
+            </div>
+        </div>
+        <div class="row" *ngIf="message">
+            <div class="col-sm-12">
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="container" *ngIf="sent">
+    <div class="row">
+        <div class="col-md">
+            <div class="header row">
+                <h1 class="col section-header">Resend Initialised - Check Your Email</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-md">
+                    <p>We will process your request and send an email with a link to confirm your user account. Please check the email address that you signed up with for your unique link.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

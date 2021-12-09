@@ -1,0 +1,11 @@
+<ng-select
+    [class]="classAttr"
+    labelForId="{{ id }}"
+    [items]="data"
+    bindLabel="name"
+    bindValue="id"
+    [groupBy]="groupByFn"
+    placeholder="Start typing name of school."
+    (change)="changeValue($event)"
+    (blur)="onTouched()"
+></ng-select>

@@ -1,0 +1,205 @@
+<div class="row" [formGroup]="personalForm">
+    <!-- Personal Details -->
+    <div class="col-md-12">
+        <div class="header row">
+            <h1 class="col section-header">Personal Details</h1>
+        </div>
+
+        <div class="row form-group">
+            <label for="legalFirstName" class="col-sm-4 control-label">Legal First Name: <span class="hidden glyphicon glyphicon-info-sign" uib-tooltip="This is your legal first name."></span></label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="legalFirstName" placeholder="This is the name that appears on your birth certificate"  [value]="personalForm.controls['legalFirstName'].value | titlecase" formControlName="legalFirstName" />
+                <div *ngIf="personalForm.controls['legalFirstName'].invalid " class="alert alert-danger">
+                    <div *ngIf="personalForm.controls['legalFirstName'].errors?.required">Legal first name is required.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="middleNames" class="col-sm-4 control-label">Middle Name(s):</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" placeholder="Middle Name(s)" id="middleNames" [value]="personalForm.controls['middleNames'].value | titlecase" formControlName="middleNames" />
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="surname" class="col-sm-4 control-label">Legal Surname:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="surname" placeholder="This is the name that appears on your birth certificate" [value]="personalForm.controls['legalSurname'].value | titlecase" formControlName="legalSurname" />
+                <div *ngIf="personalForm.controls['legalSurname'].invalid " class="alert alert-danger">
+                    <div *ngIf="personalForm.controls['legalSurname'].errors?.required">Surname is required.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group hidden">
+            <label for="preferredName" class="col-sm-4 control-label">Preferred First Name:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="preferredName" placeholder="Preferred Name" [value]="personalForm.controls['preferredName'].value | titlecase" formControlName="preferredName" />
+            </div>
+        </div>
+
+        <div class="row form-group hidden">
+            <label for="previousSurname" class="col-sm-4 control-label">Previous Surname (if any):</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="previousSurname" placeholder="Previous Surname" [value]="personalForm.controls['previousSurname'].value | titlecase" formControlName="previousSurname" />
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="dob" class="col-sm-4 control-label">Date of Birth:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="dob" placeholder="DD/MM/YYYY" formControlName="dateOfBirth" uib-datepicker-popup="dd/MM/yyyy" />
+                <div *ngIf="personalForm.controls['dateOfBirth'].invalid " class="alert alert-danger">
+                    <div *ngIf="personalForm.controls['dateOfBirth'].errors?.required">Date of birth is required.</div>
+                    <div *ngIf="personalForm.controls['dateOfBirth'].errors?.pattern">Date must be valid and entered in the format DD/MM/YYYY.</div>
+                    <div *ngIf="personalForm.controls['dateOfBirth'].errors?.dateBetween">{{ personalForm.controls['dateOfBirth'].errors?.dateBetween }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="legalSex" class="col-sm-4 control-label">Legal Sex:</label>
+            <div class="col-sm-8">
+                <legal-sex-selection class="form-control" id="legalSex" formControlName="legalSex" ng-required="true"></legal-sex-selection>
+                <div *ngIf="personalForm.controls['legalSex'].invalid " class="alert alert-danger">
+                    <div *ngIf="personalForm.controls['legalSex'].errors?.required">Legal Sex is required.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="gender" class="col-sm-4 control-label">Gender:</label>
+            <div class="col-sm-8">
+                <gender-selection class="form-control" id="gender" formControlName="gender"></gender-selection>
+                <div *ngIf="personalForm.controls['gender'].invalid " class="alert alert-danger">
+                    <div *ngIf="personalForm.controls['gender'].errors?.required">Gender is required.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="home" class="col-sm-4 control-label">Home Telephone:</label>
+            <div class="col-sm-8">
+                <input type="tel" class="form-control left phone-group" id="home" placeholder="Home Telephone" formControlName="home" />
+                <div *ngIf="personalForm.controls['home'].invalid " class="alert alert-danger">
+                    <div *ngIf="personalForm.controls['home'].errors?.minlength">The phone number entered must be at least 11 numbers long.</div>
+                    <div *ngIf="personalForm.controls['home'].errors?.maxlength">The phone number entered must be at most 15 numbers long.</div>
+                    <div *ngIf="personalForm.controls['home'].errors?.pattern">The phone number entered should be numbers only. Do not use spaces.</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row form-group">
+            <label for="mobile" class="col-sm-4 control-label">Student's Mobile Telephone:</label>
+            <div class="col-sm-8">
+                <input type="tel" class="form-control left phone-group" id="mobile" placeholder="Mobile Telephone" formControlName="mobile" />
+                <div *ngIf="personalForm.controls['mobile'].invalid " class="alert alert-danger">
+                    <div *ngIf="personalForm.controls['mobile'].errors?.minlength">The phone number entered must be at least 11 numbers long.</div>
+                    <div *ngIf="personalForm.controls['mobile'].errors?.maxlength">The phone number entered must be at most 15 numbers long.</div>
+                    <div *ngIf="personalForm.controls['mobile'].errors?.pattern">The phone number entered should be numbers only. Do not use spaces.</div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="personalForm.errors" class="row form-group">
+            <div *ngIf="personalForm.errors?.requireAtLeastOne" class="col-sm-8 offset-sm-4 alert alert-warning" [ngClass]="{'alert-danger': true}">
+                {{ personalForm.errors?.requireAtLeastOne.message }}
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="email" class="col-sm-4 control-label">Student's Personal Email:</label>
+            <div class="col-sm-8">
+                <input type="email" class="form-control" id="email" placeholder="The student's personal email" formControlName="email" />
+                <div *ngIf="personalForm.controls['email'].invalid " class="alert alert-danger">
+                    <div *ngIf="personalForm.controls['email'].errors?.required">Email is required.</div>
+                    <div *ngIf="personalForm.controls['email'].errors?.pattern">Must be a valid email address.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="confirmEmail" class="col-sm-4 control-label">Confirm Email:</label>
+            <div class="col-sm-8">
+                <input type="confirmEmail" class="form-control" id="confirmEmail" placeholder="Re-enter your email address to confirm" formControlName="confirmEmail" />
+                <div *ngIf="personalForm.controls['confirmEmail'].invalid " class="alert alert-danger">
+                    <div *ngIf="personalForm.controls['confirmEmail'].errors?.required">Email is required.</div>
+                    <div *ngIf="personalForm.controls['confirmEmail'].errors?.pattern">Must be a valid email address.</div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="personalForm.errors" class="row form-group">
+            <div *ngIf="personalForm.errors?.fieldsMatch" class="col-sm-8 offset-sm-4 alert alert-warning" [ngClass]="{'alert-danger': true}">
+                {{ personalForm.errors?.fieldsMatch.message }}
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="resident" class="col-sm-4 control-label">Resident in the UK/EU for the past 3 years:</label>
+            <div class="col-sm-3">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" name="resident" id="resident-yes" type="radio" id="resident" value="true" formControlName="resident" />
+                    <label class="form-check-label" for="resident-yes"> Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" name="resident" id="resident-no" type="radio" id="resident" value="false" formControlName="resident" />
+                    <label class="form-check-label" for="resident-no"> No</label>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                Select Yes if you have lived in the UK/EU for the past 3 years.
+            </div>
+        </div>
+        <div class="row">
+            <div *ngIf="personalForm.controls['resident'].invalid" class="offset-sm-4 col-sm-8 alert alert-danger">
+                <div *ngIf="personalForm.controls['resident'].errors?.required">This is required please click Yes or No.</div>
+            </div>
+        </div>
+
+        <div class="header row">
+            <h2 class="col section-header">Sibling Details</h2>
+        </div>
+
+        <div class="row form-group">
+            <label for="resident" class="col-sm-4 control-label">Have you had a sibling attend Reigate College?</label>
+            <div class="col-sm-3">
+                <input type="checkbox" class="form-control" id="sibling" formControlName="sibling" />
+            </div>
+            <div class="col-sm-5">
+                Tick if one of your brothers or sisters has been a student at the College in the last 5 years.
+            </div>
+        </div>
+
+        <div *ngIf="!!personalForm.controls['sibling'].value">
+
+            <div class="row form-group">
+                <label for="siblingName" class="col-sm-4 control-label">Sibling Name: <span class="hidden glyphicon glyphicon-info-sign" uib-tooltip="This is sibling full name."></span></label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="siblingName" placeholder="Siblings full name" formControlName="siblingName" />
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="siblingYear" class="col-sm-4 control-label">Sibling Year: <span class="hidden glyphicon glyphicon-info-sign" uib-tooltip="This is year your sibling left or is due to leave."></span></label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="siblingYear" placeholder="This is year your sibling left or is due to leave." formControlName="siblingYear" />
+                    <div *ngIf="personalForm.controls['siblingYear'].invalid " class="alert alert-danger">
+                        <div *ngIf="personalForm.controls['siblingYear'].errors?.pattern">This must be a valid year.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header row">
+            <h2 class="col section-header">Student Address</h2>
+        </div>
+        <address-form formControlName="address"></address-form>
+    </div>
+</div>
+
+<div class="debug invisible">
+    <button (click)="debugOutput()">Debug Info</button>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="header row">
+        <h1 class="col section-header">Applying to Reigate College</h1>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            Welcome to the Reigate College Online Application System.
+        </div>
+    </div>
+
+    <div *ngIf="!isLoggedIn()">
+        <div class="header row">
+            <h1 class="col section-header">Register</h1>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p> To make an application to Reigate College, you first need to <a routerLink="register"><strong><u>Register</u></strong></a></p>
+                <p> Once you have registered (i.e. created an account) you will receive an account confirmation email with an activation link. You will need to activate your account before you can then Login. </p>
+            </div>
+        </div>
+        <div class="header row">
+            <h1 class="col section-header">Login</h1>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>Please <a routerLink="login"><strong><u>Login</u></strong></a> using the details you used to Register.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="isLoggedIn()">
+        <div class="col-md">
+            You are now logged into the system and can complete your application by going to the <a href="#" routerLink="apply">Apply</a> page.
+        </div>
+    </div>
+</div>

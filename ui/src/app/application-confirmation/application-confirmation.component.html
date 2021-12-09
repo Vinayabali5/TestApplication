@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="header row">
+        <h1 class="col section-header" *ngIf="application?.email !== null">Application Confirmation</h1>
+        <h3 class="col section-error-header" *ngIf="application?.email === null">Application not submitted.</h3>
+    </div>
+    <div class="row" *ngIf="application?.email !== null">
+        <div class="col">
+            <p>Thank you for submitting an application to Reigate College. </p>
+            <p>An email confirming your application, has been sent to <strong>{{ application?.email }}</strong> (i.e. the student email provided). If this email address is incorrect, please email <strong>admissions@reigate.ac.uk </strong></p>
+            <p>PLEASE NOTE, YOU WILL NOT BE ABLE TO MAKE ANY AMENDMENTS TO YOUR APPLICATION NOW THAT IT IS SUBMITTED. </p>
+            <p>Changes to Course Choices can be made during interview stage. </p>
+            <p><strong>What’s next? </strong></p>
+            <p>Students will be invited for interview (subject to the College’s <a href="https://www.reigate.ac.uk/admissions/apply/admissions-policy-and-faqs/" target="_blank">Admissions Policy</a>) as follows:</p>
+            <div class="mr-md-5 ml-md-5">
+                <table class="table table-bordered mr-md-2">
+                    <thead class="thead-light">
+                        <th>Who?</th>
+                        <th>When?</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Students from Partner Schools (Carrington (formerly Warwick), de Stafford, Merstham Park, Oakwood, Priory C of E and Reigate)</td>
+                            <td>Before the end of December. </td>
+                        </tr>
+                        <tr>
+                            <td>Students from all other schools</td>
+                            <td>From December to March.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Read the latest information about this year’s <a href="https://www.reigate.ac.uk/admissions-timetable/" target="_blank">Admissions Timetable</a>.</p>
+        </div>
+    </div>
+    <div class="row" *ngIf="application?.email === null">
+        <div class="col">
+            <p>Application has not been submitted. </p>
+            <p>Please email <b>admissions@reigate.ac.uk</b> to report the issue.</p>
+        </div>
+    </div>
+</div>

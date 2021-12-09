@@ -1,0 +1,12 @@
+= Getting Started With Online Application API
+
+== Titles API
+
+.curl
+include::{snippets}/titles-api-get-all/curl-request.adoc[]
+
+.request
+include::{snippets}/titles-api-get-all/http-request.adoc[]
+
+.response
+include::{snippets}/titles-api-get-all/http-response.adoc[]

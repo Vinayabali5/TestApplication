@@ -1,0 +1,65 @@
+<div class="row" [formGroup]="schoolForm">
+    <!-- Personal Details -->
+    <div class="col-md-12">
+        <div class="row header">
+            <h1 class="col section-header">School Details (present or most recent)</h1>
+        </div>
+
+        <div class="row form-group">
+            <label for="school" class="col-sm-4 control-label">Present/previous school/college name:</label>
+            <div class="col-sm-8" *ngIf="!disableSchoolLookup">
+                <school-selection class="" id="school" formControlName="school" placeholder="Start typing name of school"></school-selection>
+                <div *ngIf="schoolForm.controls['school'].invalid" class="col-off-md-4 alert alert-danger">
+                    <div *ngIf="schoolForm.controls['school'].errors?.required">Present/previous school/college is required.</div>
+                </div>
+            </div>
+            <div class="col-sm-8" *ngIf="disableSchoolLookup">
+                <input class="form-control" type="text" placeholder="School Lookup Disabled" disabled>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <label for="schoolNotListed" class="col-sm-4 control-label">School not listed above:</label>
+            <div class="col-sm-3">
+                <input type="checkbox" class="form-control" id="schoolNotListed" formControlName="schoolNotListed" (change)="toggleNotListed()" />
+            </div>
+            <div class="col-sm-5">
+                Tick if you cannot find your school in the list above. You will need to supply details of your school.
+            </div>
+        </div>
+
+        <div *ngIf="schoolForm.controls['schoolNotListed'].value === true">
+            <div class="row form-group">
+                <label for="schoolName" class="col-sm-4 control-label">School Name:</label>
+                <div class="col-sm-8">
+                    <input type="schoolName" class="form-control" id="schoolName" placeholder="The name of your school" formControlName="schoolName" />
+                    <div *ngIf="schoolForm.controls['schoolName'].invalid" class="col-off-md-4 alert alert-danger">
+                        <div *ngIf="schoolForm.controls['schoolName'].errors?.required">School Name is required.</div>
+                    </div>
+                </div>
+            </div>
+            <address-form id="school-address" idSuffix="school-address-" formControlName="schoolAddress"></address-form>
+        </div>
+
+        <div class="row form-group">
+            <label for="endDate" class="col-sm-4 control-label">Date left or due to leave:</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="endDate" placeholder="e.g. 15/07/2022 - Please approximate if not sure" formControlName="endDate" uib-datepicker-popup="dd/MM/yyyy" />
+                <div *ngIf="schoolForm.controls['endDate'].invalid" class="col-off-md-4 alert alert-danger">
+                    <div *ngIf="schoolForm.controls['endDate'].errors?.required">School leaving date is required.</div>
+                    <div *ngIf="schoolForm.controls['endDate'].errors?.pattern">Date must be valid and entered in the format DD/MM/YYYY.</div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="schoolForm.errors" class="row form-group">
+            <div *ngIf="schoolForm.errors?.dateLessThan" class="col-sm-8 offset-sm-4 alert alert-warning" [ngClass]="{'alert-danger': true}">
+                The date started at your school should be before the end date.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="debug invisible">
+    <button (click)="debugOutput()">Debug Info</button>
+</div>

@@ -1,0 +1,49 @@
+<form novalidate action="" [formGroup]="application">
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <introduction-blurb></introduction-blurb>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <personal-details-form formControlName="personalDetails"></personal-details-form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <contact-details-form formControlName="contactDetails"></contact-details-form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <school-details-form formControlName="schoolDetails"></school-details-form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <course-selection-form formControlName="courseSelection"></course-selection-form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <button class="btn btn-primary" (click)="createApplication()" [disabled]="!isValid()">Save Application</button>
+                <button *ngIf="DEBUG" class="btn btn-default" (click)="debugOutput()">Debug</button>
+            </div>
+            <div class="col-sm-10">
+                If you have any problems with completing the online form, please contact <strong>admissions@reigate.ac.uk</strong>.
+                Before you do, it’s worth going back over the form and checking for any errors or emissions. You will not be able to submit the form if there are any significant errors or emissions.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <hr>
+            </div>
+        </div>
+    </div>
+</form>

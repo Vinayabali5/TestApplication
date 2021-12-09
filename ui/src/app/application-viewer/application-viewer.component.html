@@ -1,0 +1,259 @@
+<div class="container">
+    <div class="header row">
+        <h1 class="col section-header">Application Confirmation</h1>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Thank you for submitting an application to Reigate College. </p>
+            <p>PLEASE NOTE, YOU WILL NOT BE ABLE TO MAKE ANY AMENDMENTS TO YOUR APPLICATION NOW THAT IT IS SUBMITTED. </p>
+            <p>Changes to Course Choices can be made during interview stage. </p>
+            <p><strong>What’s next? </strong></p>
+            <p>Students will be invited for interview (subject to the College’s <a href="https://www.reigate.ac.uk/admissions/apply/admissions-policy-and-faqs/" target="_blank">Admissions Policy</a>) as follows:</p>
+            <div class="mr-md-5 ml-md-5">
+                <table class="table table-bordered mr-md-2">
+                    <thead class="thead-light">
+                        <th>Who?</th>
+                        <th>When?</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Students from Partner Schools (Carrington (formerly Warwick), de Stafford, Merstham Park, Oakwood, Priory C of E and Reigate)</td>
+                            <td>Before the end of December. </td>
+                        </tr>
+                        <tr>
+                            <td>Students from all other schools</td>
+                            <td>From December to March.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Read the latest information about this year’s <a href="https://www.reigate.ac.uk/admissions-timetable/" target="_blank">Admissions Timetable</a>.</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12 section-header">
+            <h1>Application Details</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 field-name">Admission Number:</div>
+        <div class="col-md-8 field-value">{{ application?.id }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 field-name">Date Received:</div>
+        <div class="col-md-8 field-value">{{ application?.received }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 section-header">
+            <h1>Personal Details</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 field-name">Legal First Name:</div>
+        <div class="col-md-8 field-value">{{ application?.legalFirstName }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Legal Surname:</div>
+        <div class="col-md-8 field-value">{{ application?.legalSurname }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Middle Name(s):</div>
+        <div class="col-md-8 field-value">{{ application?.middleNames }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Preferred Name:</div>
+        <div class="col-md-8 field-value">{{ application?.preferredName }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Date of Birth:</div>
+        <div class="col-md-8 field-value">{{ application?.dateOfBirth }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 field-name">Legal Sex:</div>
+        <div class="col-md-8 field-value">{{ application?._legalSexDescription }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Gender:</div>
+        <div class="col-md-8 field-value">{{ application?._genderDescription }}</div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4 field-name">Home:</div>
+        <div class="col-md-8 field-value">{{ application?.home }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Mobile:</div>
+        <div class="col-md-8 field-value">{{ application?.mobile }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Email:</div>
+        <div class="col-md-8 field-value">{{ application?.email }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Resident in the UK/EU:</div>
+        <div class="col-md-8 field-value">{{ application?.resident ? 'Yes' : 'No' }}</div>
+    </div>
+
+
+
+    <div *ngIf="application?.sibling">
+        <div class="row">
+            <div class="col-md-4 field-name">Sibling at Reigate College:</div>
+            <div class="col-md-8 field-value">{{ application?.sibling ? 'Yes' : 'No' }}</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 section-header">
+            <h2>Student's Address</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 field-name">Address Line1:</div>
+        <div class="col-md-8 field-value">{{ application?.address?.line1 }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Address Line2:</div>
+        <div class="col-md-8 field-value">{{ application?.address?.line2 }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Address Line3:</div>
+        <div class="col-md-8 field-value">{{ application?.address?.line3 }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Town:</div>
+        <div class="col-md-8 field-value">{{ application?.address?.town }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">County:</div>
+        <div class="col-md-8 field-value">{{ application?.address?.county }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">Postcode:</div>
+        <div class="col-md-8 field-value">{{ application?.address?.postcode }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 section-header">
+            <h1>Contact Details</h1>
+        </div>
+    </div>
+
+    <div *ngFor="let contact of application?.contacts; let i = index;">
+        <div class="row">
+            <div class="col-md-12 section-header">
+                <h2>Contact {{ i + 1 }} Details</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 field-name">Contact Type:</div>
+            <div class="col-md-8 field-value">{{ contact._contactTypeDescription }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 field-name">Title:</div>
+            <div class="col-md-8 field-value">{{ contact._titleDescription }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 field-name">First Name:</div>
+            <div class="col-md-8 field-value">{{ contact.firstName }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 field-name">Surname:</div>
+            <div class="col-md-8 field-value">{{ contact.surname }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 field-name">Home:</div>
+            <div class="col-md-8 field-value">{{ contact.home }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 field-name">Mobile:</div>
+            <div class="col-md-8 field-value">{{ contact.mobile }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 field-name">Email:</div>
+            <div class="col-md-8 field-value">{{ contact.email }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 field-name">Contactable:</div>
+            <div class="col-md-8 field-value">{{ contact.contactable ? 'Yes' : 'No' }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 field-name">Preferred:</div>
+            <div class="col-md-8 field-value">{{ contact.preferred ? 'Yes' : 'No' }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 field-name">Live at same address as student:</div>
+            <div class="col-md-8 field-value">{{ contact.sameAddress ? 'Yes' : 'No' }}</div>
+        </div>
+
+        <div *ngIf="contact.address">
+            <div class="row">
+                <div class="col-md-4 field-name">Line 1:</div>
+                <div class="col-md-8 field-value">{{ contact.address.line1 }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 field-name">Line 2:</div>
+                <div class="col-md-8 field-value">{{ contact.address.line2 }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 field-name">Line 3:</div>
+                <div class="col-md-8 field-value">{{ contact.address.line3 }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 field-name">Town:</div>
+                <div class="col-md-8 field-value">{{ contact.address.town }}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 field-name">Postcode:</div>
+                <div class="col-md-8 field-value">{{ contact.address.postcode }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 section-header">
+            <h1>School Details</h1>
+        </div>
+    </div>
+
+    <div class="row" *ngIf="!application?.schoolNotListed">
+        <div class="col-md-4 field-name">School:</div>
+        <div class="col-md-8 field-value">{{ application?._schoolDescription }}</div>
+    </div>
+    <div class="row" *ngIf="application?.schoolNotListed">
+        <div class="col-md-4 field-name">School:</div>
+        <div class="col-md-8 field-value">{{ application?.schoolName }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 field-name">End Date:</div>
+        <div class="col-md-8 field-value">{{ application?.endDate }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 section-header">
+            <h1>Initial Course Choices</h1>
+        </div>
+    </div>
+
+    <div *ngFor="let course of application?.courses; let i = index;">
+        <div class="row">
+            <div class="col-md-8 field-value">{{ course?.title }}</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            &nbsp;
+        </div>
+    </div>
+
+</div>
